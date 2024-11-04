@@ -8,13 +8,13 @@
 """
 import os
 
-from locust import TaskSet, task, between, constant
+from locust import TaskSet, task, between, constant, SequentialTaskSet
 
 from api import Cookie
 from config import BASE_DIR
 
 
-class HttpBinModule(TaskSet):
+class HttpBinModule(SequentialTaskSet):  # 设定用户行为 继承 SequentialTaskSet 表示 从上而下执行任务顺序
 
     get_url = "/get"
     post_url = "/post"
